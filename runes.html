@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Runes</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,53 +17,55 @@
 
 <section class="hero">
     <h1>Runes</h1>
-    <p>Click a rune to view all its stats</p>
+    <p>Click a rune to view all its stat images</p>
 </section>
 
 <section class="content rune-grid">
 
-    <!-- LUCK -->
-    <div class="rune-card" onclick="openRune('luck')">
+    <div class="rune-card" onclick="openRune('luck', 3)">
         <h2>Luck Rune</h2>
-        <img src="images/runes/luck.png">
+        <img src="images/runes/luck.png" alt="Luck Rune">
         <p>+40 Luck</p>
+        <p>Click to view stats</p>
     </div>
 
-    <!-- SPEED -->
-    <div class="rune-card" onclick="openRune('speed')">
+    <div class="rune-card" onclick="openRune('speed', 2)">
         <h2>Speed Rune</h2>
-        <img src="images/runes/speed.png">
+        <img src="images/runes/speed.png" alt="Speed Rune">
         <p>+25.6 Speed</p>
+        <p>Click to view stats</p>
     </div>
 
-    <!-- BULK -->
-    <div class="rune-card" onclick="openRune('bulk')">
+    <div class="rune-card" onclick="openRune('bulk', 4)">
         <h2>Bulk Rune</h2>
-        <img src="images/runes/bulk.png">
+        <img src="images/runes/bulk.png" alt="Bulk Rune">
         <p>+65 Bulk</p>
+        <p>Click to view stats</p>
     </div>
 
 </section>
 
-<!-- POPUP -->
-<div id="popup" class="popup">
-    <div class="popup-content">
-        <span class="close" onclick="closePopup()">&times;</span>
+<div id="popup" class="popup" onclick="closePopup(event)">
+    <div class="popup-content" onclick="event.stopPropagation()">
+        <span class="close" onclick="forceClosePopup()">&times;</span>
+        <h2 id="popup-title">Rune Details</h2>
         <div id="popup-images"></div>
     </div>
 </div>
 
 <script>
-function openRune(rune) {
+function openRune(rune, imageCount) {
     const popup = document.getElementById("popup");
+    const popupTitle = document.getElementById("popup-title");
     const container = document.getElementById("popup-images");
 
+    popupTitle.textContent = rune.charAt(0).toUpperCase() + rune.slice(1) + " Rune";
     container.innerHTML = "";
 
-    // Change number of images per rune here
-    for (let i = 1; i <= 5; i++) {
-        let img = document.createElement("img");
+    for (let i = 1; i <= imageCount; i++) {
+        const img = document.createElement("img");
         img.src = `images/rune-details/${rune}/${i}.png`;
+        img.alt = `${rune} detail ${i}`;
         img.className = "popup-img";
         container.appendChild(img);
     }
@@ -70,8 +73,14 @@ function openRune(rune) {
     popup.style.display = "flex";
 }
 
-function closePopup() {
+function forceClosePopup() {
     document.getElementById("popup").style.display = "none";
+}
+
+function closePopup(event) {
+    if (event.target.id === "popup") {
+        forceClosePopup();
+    }
 }
 </script>
 
