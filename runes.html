@@ -16,33 +16,64 @@
 
 <section class="hero">
     <h1>Runes</h1>
-    <p>All rune stats, chances, and info</p>
+    <p>Click a rune to view all its stats</p>
 </section>
 
 <section class="content rune-grid">
 
-    <div class="rune-card">
+    <!-- LUCK -->
+    <div class="rune-card" onclick="openRune('luck')">
         <h2>Luck Rune</h2>
-        <img src="images/runes/luck.png" alt="Luck Rune">
+        <img src="images/runes/luck.png">
         <p>+40 Luck</p>
-        <p>Chance: 1 in 250</p>
     </div>
 
-    <div class="rune-card">
+    <!-- SPEED -->
+    <div class="rune-card" onclick="openRune('speed')">
         <h2>Speed Rune</h2>
-        <img src="images/runes/speed.png" alt="Speed Rune">
+        <img src="images/runes/speed.png">
         <p>+25.6 Speed</p>
-        <p>Chance: 1 in 400</p>
     </div>
 
-    <div class="rune-card">
+    <!-- BULK -->
+    <div class="rune-card" onclick="openRune('bulk')">
         <h2>Bulk Rune</h2>
-        <img src="images/runes/bulk.png" alt="Bulk Rune">
+        <img src="images/runes/bulk.png">
         <p>+65 Bulk</p>
-        <p>Chance: 1 in 1000</p>
     </div>
 
 </section>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <div id="popup-images"></div>
+    </div>
+</div>
+
+<script>
+function openRune(rune) {
+    const popup = document.getElementById("popup");
+    const container = document.getElementById("popup-images");
+
+    container.innerHTML = "";
+
+    // Change number of images per rune here
+    for (let i = 1; i <= 5; i++) {
+        let img = document.createElement("img");
+        img.src = `images/rune-details/${rune}/${i}.png`;
+        img.className = "popup-img";
+        container.appendChild(img);
+    }
+
+    popup.style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
 
 </body>
 </html>
