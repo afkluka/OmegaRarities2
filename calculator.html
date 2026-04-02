@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header class="navbar">
-    <h1 class="logo">OMEGA RARITIES 2</h1>
+<header class="topbar">
+    <div class="logo">OMEGA RARITIES 2</div>
     <nav>
         <a href="index.html">HOME</a>
         <a href="guide.html">GUIDE</a>
@@ -17,78 +18,10 @@
     </nav>
 </header>
 
-<section class="hero small">
-    <h1>Rune Calculator</h1>
-    <p>Calculate your real rune odds</p>
+<section class="hero">
+    <h1>Calculator</h1>
+    <p>too lazy to make now</p>
 </section>
-
-<section class="calculator-box">
-
-    <h2>Enter Stats</h2>
-
-    <input type="number" id="rps" placeholder="Runes Per Second (RPS)">
-    <input type="number" id="target" placeholder="Target Rune (e.g. 10 for 1 in 10)">
-
-    <select id="unit">
-        <option value="1">Normal</option>
-        <option value="1e3">K</option>
-        <option value="1e6">M</option>
-        <option value="1e9">B</option>
-        <option value="1e12">T</option>
-        <option value="1e15">Qa</option>
-        <option value="1e18">Qi</option>
-        <option value="1e21">Sx</option>
-        <option value="1e24">Sp</option>
-        <option value="1e27">Oc</option>
-        <option value="1e30">No</option>
-        <option value="1e33">DDe</option>
-        <option value="1e36">UDe</option>
-        <option value="1e39">TDe</option>
-        <option value="1e42">Vt</option>
-    </select>
-
-    <button onclick="calculate()">CALCULATE</button>
-
-    <div id="result"></div>
-
-</section>
-
-<script>
-function formatNumber(num) {
-    if (num < 1000) return num.toFixed(2);
-
-    const units = ["K","M","B","T","Qa","Qi","Sx","Sp","Oc","No","DDe","UDe","TDe","Vt"];
-    let i = -1;
-
-    while (num >= 1000 && i < units.length-1) {
-        num /= 1000;
-        i++;
-    }
-
-    return num.toFixed(2) + " " + units[i];
-}
-
-function calculate() {
-    let rps = parseFloat(document.getElementById("rps").value);
-    let target = parseFloat(document.getElementById("target").value);
-    let unit = parseFloat(document.getElementById("unit").value);
-
-    if (!rps || !target) {
-        document.getElementById("result").innerText = "Enter valid numbers";
-        return;
-    }
-
-    let targetValue = target * unit;
-
-    // MAGIC CONSTANT (from your data)
-    let constant = 1000000000000; 
-
-    let result = targetValue / (rps * constant);
-
-    document.getElementById("result").innerText =
-        "Chance: 1 in " + formatNumber(result);
-}
-</script>
 
 </body>
 </html>
