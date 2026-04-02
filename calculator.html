@@ -112,18 +112,6 @@
             word-break: break-word;
         }
 
-        .calc-note {
-            margin-top: 16px;
-            color: #cfcfcf;
-            line-height: 1.5;
-            font-size: 14px;
-        }
-
-        .highlight-orange {
-            color: #ff9f2f;
-            font-weight: bold;
-        }
-
         .unit-list {
             margin-top: 18px;
             padding: 14px;
@@ -169,7 +157,7 @@
 
             <div class="calc-field">
                 <label>Rune Luck</label>
-                <input id="luck" type="number" value="1">
+                <input id="luck" type="text" value="1" placeholder="Example: 1, 2.82, 10m, 1DDe">
             </div>
 
             <div class="calc-field">
@@ -190,11 +178,6 @@
                 <div class="result-box">
                     <div class="label">Estimated Chance (True RNG)</div>
                     <div class="value" id="chanceOutput">-</div>
-                </div>
-
-                <div class="result-box">
-                    <div class="label">Effective Opened</div>
-                    <div class="value" id="openedOutput">-</div>
                 </div>
 
                 <div class="result-box">
@@ -276,20 +259,22 @@
     function calculateChance() {
         const rps = parseGameNumber(document.getElementById("rps").value);
         const target = parseGameNumber(document.getElementById("targetOdds").value);
-        let luck = parseFloat(document.getElementById("luck").value);
+        let luck = parseGameNumber(document.getElementById("luck").value);
 
-        if (!Number.isFinite(rps) || !Number.isFinite(target)) {
+        if (!Number.isFinite(rps) || !Number.isFinite(target) || !Number.isFinite(luck)) {
             alert("Invalid input");
             return;
         }
 
-        if (!luck || luck <= 0) luck = 1;
+        if (rps <= 0 || target <= 0 || luck <= 0) {
+            alert("Values must be greater than 0");
+            return;
+        }
 
         const result = (target / (rps * BASE_CONSTANT * luck)) * 10000;
 
         document.getElementById("chanceOutput").textContent = "1 in " + formatLargeNumber(result);
-        document.getElementById("openedOutput").textContent = formatLargeNumber(rps);
-        document.getElementById("luckOutput").textContent = "x" + luck;
+        document.getElementById("luckOutput").textContent = formatLargeNumber(luck);
         document.getElementById("targetOutput").textContent = "1 in " + document.getElementById("targetOdds").value;
         document.getElementById("rpsOutput").textContent = formatLargeNumber(rps);
 
