@@ -325,7 +325,7 @@
 
         const effectiveOpened = rps;
         const estimatedChance = (targetOdds / (effectiveOpened * BASE_CONSTANT * luck)) * 10000;
-        const estimatedTimeSeconds = estimatedChance / rps;
+        const estimatedTimeSeconds = (estimatedChance / rps) * 10000;
 
         document.getElementById("chanceOutput").textContent = `1 in ${formatLargeNumber(estimatedChance)}`;
         document.getElementById("timeOutput").textContent = formatTime(estimatedTimeSeconds);
