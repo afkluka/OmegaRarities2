@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+}
+
+header {
+    background: #1e293b;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.hero {
+    padding: 50px;
+    text-align: center;
+    background: linear-gradient(to right, #22c55e, #16a34a);
+}
+
+.content {
+    padding: 30px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #1e293b;
+}
