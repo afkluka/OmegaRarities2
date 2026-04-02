@@ -154,7 +154,7 @@
 
 <section class="hero">
     <h1>Calculator</h1>
-    <p>Estimate rune chance from RPS, Luck, and target odds</p>
+    <p>Estimate rune chance from RPS and luck</p>
 </section>
 
 <section class="calc-wrap">
@@ -288,7 +288,7 @@
         const targetOdds = parseGameNumber(targetText);
 
         if (!Number.isFinite(rps) || rps <= 0) {
-            alert("Enter a valid RPS like 174.15DDe, 10m, 1QnDe, etc.");
+            alert("Enter a valid RPS like 10DDe, 10m, 1QnDe, etc.");
             return;
         }
 
@@ -309,7 +309,7 @@
         document.getElementById("rpsOutput").textContent = formatLargeNumber(rps);
 
         document.getElementById("extraNote").textContent =
-            "Clone was removed. Result is now multiplied by 10,000 as requested.";
+            "THIS ALREADY EXISTS IN THE GAME NOW ITS CALLED TRUE RNG";
 
         document.getElementById("resultBox").style.display = "block";
     }
