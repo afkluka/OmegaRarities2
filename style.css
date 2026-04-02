@@ -43,7 +43,7 @@ header a:hover {
 /* Content sections */
 section.content {
     padding: 30px;
-    max-width: 900px;
+    max-width: 1000px;
     margin: auto;
 }
 
@@ -74,24 +74,36 @@ video {
     border-radius: 10px;
 }
 
-/* Table styling for RUNES info */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+/* ===================== */
+/* RUNE GRID STYLING 🔥 */
+/* ===================== */
+
+/* Grid layout */
+.rune-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
 
-table, th, td {
-    border: 2px solid #3e3e5a;
-}
-
-th, td {
-    padding: 10px;
+/* Rune cards */
+.rune-card {
+    background: #2b2b3f;
+    padding: 15px;
+    border-radius: 12px;
     text-align: center;
+    transition: 0.2s;
 }
 
-th {
-    background: #3e3e5a;
+/* Hover effect */
+.rune-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #22c55e;
 }
-    background: #3e3e5a;
+
+/* Rune images */
+.rune-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin: 10px 0;
 }
