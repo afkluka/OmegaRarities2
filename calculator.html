@@ -154,7 +154,7 @@
 
 <section class="hero">
     <h1>Calculator</h1>
-    <p>Estimate rune chance from RPS and luck</p>
+    <p>Estimate rune chance from RPS, Luck, and target odds</p>
 </section>
 
 <section class="calc-wrap">
@@ -191,8 +191,13 @@
 
             <div class="result-grid">
                 <div class="result-box">
-                    <div class="label">Estimated Chance</div>
+                    <div class="label">Estimated Chance (True RNG)</div>
                     <div class="value" id="chanceOutput">-</div>
+                </div>
+
+                <div class="result-box">
+                    <div class="label">Estimated Time</div>
+                    <div class="value" id="timeOutput">-</div>
                 </div>
 
                 <div class="result-box">
@@ -278,6 +283,25 @@
         return `${num.toFixed(2)}${prettyUnit}`;
     }
 
+    function formatTime(seconds) {
+        if (!Number.isFinite(seconds) || seconds < 0) return "Invalid";
+
+        if (seconds < 1) return `${seconds.toFixed(2)} sec`;
+        if (seconds < 60) return `${seconds.toFixed(2)} sec`;
+
+        const minutes = seconds / 60;
+        if (minutes < 60) return `${minutes.toFixed(2)} min`;
+
+        const hours = minutes / 60;
+        if (hours < 24) return `${hours.toFixed(2)} hr`;
+
+        const days = hours / 24;
+        if (days < 365) return `${days.toFixed(2)} days`;
+
+        const years = days / 365;
+        return `${years.toFixed(2)} years`;
+    }
+
     function calculateChance() {
         const rpsText = document.getElementById("rps").value;
         const targetText = document.getElementById("targetOdds").value;
@@ -288,7 +312,7 @@
         const targetOdds = parseGameNumber(targetText);
 
         if (!Number.isFinite(rps) || rps <= 0) {
-            alert("Enter a valid RPS like 10DDe, 10m, 1QnDe, etc.");
+            alert("Enter a valid RPS like 174.15DDe, 10m, 1QnDe, etc.");
             return;
         }
 
@@ -301,15 +325,17 @@
 
         const effectiveOpened = rps;
         const estimatedChance = (targetOdds / (effectiveOpened * BASE_CONSTANT * luck)) * 10000;
+        const estimatedTimeSeconds = estimatedChance / rps;
 
         document.getElementById("chanceOutput").textContent = `1 in ${formatLargeNumber(estimatedChance)}`;
+        document.getElementById("timeOutput").textContent = formatTime(estimatedTimeSeconds);
         document.getElementById("openedOutput").textContent = formatLargeNumber(effectiveOpened);
         document.getElementById("luckOutput").textContent = `x${luck}`;
         document.getElementById("targetOutput").textContent = `1 in ${targetText}`;
         document.getElementById("rpsOutput").textContent = formatLargeNumber(rps);
 
         document.getElementById("extraNote").textContent =
-            "THIS ALREADY EXISTS IN THE GAME NOW ITS CALLED TRUE RNG";
+            "Estimated Time is based on: Estimated Chance ÷ RPS.";
 
         document.getElementById("resultBox").style.display = "block";
     }
