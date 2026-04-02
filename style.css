@@ -1,12 +1,10 @@
-/* General page styling */
 body {
     margin: 0;
-    font-family: "Arial", sans-serif;
+    font-family: Arial, sans-serif;
     background: #1e1e2f;
     color: white;
 }
 
-/* Header with buttons */
 header {
     background: #2b2b3f;
     padding: 15px;
@@ -28,11 +26,10 @@ header a {
 
 header a:hover {
     background: #22c55e;
-    color: #fff;
+    color: white;
     box-shadow: 0 0 10px #22c55e;
 }
 
-/* Hero section */
 .hero {
     text-align: center;
     padding: 50px;
@@ -40,14 +37,12 @@ header a:hover {
     border-bottom: 5px solid #3e3e5a;
 }
 
-/* Content sections */
 section.content {
     padding: 30px;
     max-width: 1000px;
     margin: auto;
 }
 
-/* Buttons inside content */
 button {
     background: #3e3e5a;
     color: white;
@@ -65,7 +60,6 @@ button:hover {
     box-shadow: 0 0 10px #22c55e;
 }
 
-/* Video styling */
 video {
     display: block;
     margin: 20px auto;
@@ -74,18 +68,12 @@ video {
     border-radius: 10px;
 }
 
-/* ===================== */
-/* RUNE GRID STYLING 🔥 */
-/* ===================== */
-
-/* Grid layout */
 .rune-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
 }
 
-/* Rune cards */
 .rune-card {
     background: #2b2b3f;
     padding: 15px;
@@ -94,13 +82,11 @@ video {
     transition: 0.2s;
 }
 
-/* Hover effect */
 .rune-card:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px #22c55e;
 }
 
-/* Rune images */
 .rune-card img {
     width: 100px;
     height: 100px;
