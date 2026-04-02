@@ -1,37 +1,95 @@
+/* General page styling */
 body {
     margin: 0;
-    font-family: Arial;
-    background: #0f172a;
+    font-family: "Arial", sans-serif;
+    background: #1e1e2f;
     color: white;
 }
 
+/* Header with buttons */
 header {
-  text-align: center;
-  background: linear-gradient(to right, #ff7f50, #ff1493);
-  padding: 20px;
-  color: white;
-  font-family: 'Arial Black', sans-serif;
-  text-shadow: 2px 2px 4px #000;
+    background: #2b2b3f;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
 }
 
-nav a {
-    color: white;
-    margin-left: 15px;
+header a {
     text-decoration: none;
+    color: white;
+    background: #3e3e5a;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.2s;
 }
 
+header a:hover {
+    background: #22c55e;
+    color: #fff;
+    box-shadow: 0 0 10px #22c55e;
+}
+
+/* Hero section */
 .hero {
+    text-align: center;
     padding: 50px;
-    text-align: center;
     background: linear-gradient(to right, #22c55e, #16a34a);
+    border-bottom: 5px solid #3e3e5a;
 }
 
-.content {
+/* Content sections */
+section.content {
     padding: 30px;
+    max-width: 900px;
+    margin: auto;
 }
 
-footer {
-    text-align: center;
+/* Buttons inside content */
+button {
+    background: #3e3e5a;
+    color: white;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #22c55e;
+    box-shadow: 0 0 10px #22c55e;
+}
+
+/* Video styling */
+video {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    border: 3px solid #3e3e5a;
+    border-radius: 10px;
+}
+
+/* Table styling for RUNES info */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 2px solid #3e3e5a;
+}
+
+th, td {
     padding: 10px;
-    background: #1e293b;
+    text-align: center;
+}
+
+th {
+    background: #3e3e5a;
 }
