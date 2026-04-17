@@ -368,7 +368,7 @@
             return;
         }
 
-        const result = (target / (rps * BASE_CONSTANT * luck)) * 605;
+        const result = (target / (rps * BASE_CONSTANT * luck)) * 31236;
 
         document.getElementById("chanceOutput").textContent = "1 in " + formatLargeNumber(result);
         document.getElementById("luckOutput").textContent = formatLargeNumber(luck);
